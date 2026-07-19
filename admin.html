@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BiteDrop Admin — Prices &amp; Stock</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="admin.css?v=1" />
+</head>
+<body>
+
+  <header class="header">
+    <a class="logo" href="index.html">
+      <span class="logo__drop">Bite</span><span class="logo__accent">Drop</span>
+    </a>
+    <span class="admin-tag">Admin</span>
+    <nav class="nav">
+      <a href="index.html">← Back to store</a>
+    </nav>
+  </header>
+
+  <main class="admin">
+    <h1>Prices &amp; stock</h1>
+    <p class="admin__sub">Changes save to the live site — allow a minute or two for them to show up. Leave a price blank to show "Price TBD".</p>
+
+    <div class="admin-token">
+      <label class="field">
+        <span class="field__label">GitHub token</span>
+        <input class="field__input" type="password" id="tokenInput" placeholder="github_pat_… (needed to save)" autocomplete="off" />
+      </label>
+      <label class="admin-token__remember">
+        <input type="checkbox" id="rememberToken" /> Remember on this device
+      </label>
+    </div>
+
+    <div class="admin-table" id="adminTable">
+      <p class="admin__loading">Loading stock list…</p>
+    </div>
+
+    <p class="modal__error" id="adminError" hidden></p>
+    <p class="admin__ok" id="adminOk" hidden></p>
+    <button class="btn btn--primary" id="saveBtn">Save changes</button>
+  </main>
+
+  <script src="admin.js?v=1"></script>
+</body>
+</html>

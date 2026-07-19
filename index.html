@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BiteDrop — Snack Drops for the Halls</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=4" />
+</head>
+<body>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>FRESH DROP</span><span>★</span><span>NO LINES, JUST BITES</span><span>★</span>
+      <span>OREOS · M&amp;M'S · TWIX · SNICKERS · MILKY WAY</span><span>★</span>
+      <span>WHILE STOCK LASTS</span><span>★</span>
+      <span>FRESH DROP</span><span>★</span><span>NO LINES, JUST BITES</span><span>★</span>
+      <span>OREOS · M&amp;M'S · TWIX · SNICKERS · MILKY WAY</span><span>★</span>
+      <span>WHILE STOCK LASTS</span><span>★</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <a class="logo" href="#top">
+      <span class="logo__drop">Bite</span><span class="logo__accent">Drop</span>
+    </a>
+    <nav class="nav">
+      <a href="#shop">Shop</a>
+      <a href="#faq">How it works</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 7h12l1.5 12.5a1 1 0 0 1-1 1.1H5.5a1 1 0 0 1-1-1.1L6 7Z"/>
+        <path d="M9 10V6a3 3 0 0 1 6 0v4"/>
+      </svg>
+      <span>Cart</span>
+      <span class="cart-btn__count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero__inner">
+        <p class="hero__eyebrow">Student-run snack stand · Drop 01</p>
+        <h1 class="hero__title">Sweet stuff,<br /><span class="hero__title-pop">dropped fresh.</span></h1>
+        <p class="hero__sub">Oreos, M&amp;M's, and all the good bars — between classes, while stock lasts. When it's gone, it's gone.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#shop">Shop the drop</a>
+          <span class="hero__stock-note" id="heroStock"></span>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#shop" aria-label="Scroll to the shop">
+        <span class="scroll-cue__label">Scroll</span>
+        <span class="scroll-cue__track"><span class="scroll-cue__dot"></span></span>
+      </a>
+    </section>
+
+    <section class="shop" id="shop">
+      <div class="shop__head">
+        <h2>This week's stock</h2>
+        <p>Everything counts down live. Low-stock items get flagged so you don't miss out.</p>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2>How it works</h2>
+      <ol class="faq__steps">
+        <li>
+          <h3>Add to cart</h3>
+          <p>Pick your snacks. Stock counts are real — the cart won't let you grab more than what's left.</p>
+        </li>
+        <li>
+          <h3>Place your order</h3>
+          <p>Hit "Place order" and we'll set it aside with your name on it.</p>
+        </li>
+        <li>
+          <h3>Pay at pickup</h3>
+          <p>Online payment is coming soon. For now, pay when you grab your order.</p>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span class="footer__logo">Bite<span>Drop</span></span>
+    <p>Made by students, for students. See you between classes.</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Your cart</h2>
+      <button class="drawer__close" id="drawerClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="drawer__items" id="cartItems"></div>
+    <div class="drawer__foot">
+      <div class="drawer__total">
+        <span>Total</span>
+        <strong id="cartTotal">—</strong>
+      </div>
+      <p class="drawer__note" id="totalNote">Prices coming soon — totals show up once they're set.</p>
+      <button class="btn btn--primary btn--wide" id="checkoutBtn">Place order</button>
+      <p class="drawer__pay-note">💳 Pay at pickup · online payment coming soon</p>
+    </div>
+  </aside>
+
+  <!-- Checkout modal -->
+  <div class="modal-overlay" id="checkoutOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <div class="modal__head">
+        <h2 id="checkoutTitle">Almost yours</h2>
+        <button class="drawer__close" id="checkoutClose" aria-label="Close checkout">✕</button>
+      </div>
+      <form class="modal__form" id="checkoutForm">
+        <label class="field">
+          <span class="field__label">Name</span>
+          <input class="field__input" type="text" name="name" required autocomplete="name" placeholder="Your name" />
+        </label>
+        <label class="field">
+          <span class="field__label">Email</span>
+          <input class="field__input" type="email" name="email" required autocomplete="email" placeholder="you@school.edu" />
+        </label>
+        <label class="field">
+          <span class="field__label">Where to meet <em>(optional)</em></span>
+          <input class="field__input" type="text" name="location" placeholder="e.g. Cafeteria, locker 214, after 3rd period" />
+        </label>
+        <p class="modal__note">📬 We'll try to respond to you on Gmail.</p>
+        <p class="modal__error" id="checkoutError" hidden></p>
+        <button class="btn btn--primary btn--wide" id="checkoutSubmit" type="submit">Confirm order</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>

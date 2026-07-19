@@ -1,0 +1,97 @@
+/* Admin-only styles, layered on top of styles.css */
+.admin-tag {
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+}
+.admin {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem clamp(1.2rem, 5vw, 2.5rem) 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.admin h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+.admin__sub { font-weight: 500; color: var(--ink-soft); max-width: 38rem; }
+.admin-token {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+}
+.admin-token .field { flex: 1; min-width: 240px; }
+.admin-token__remember {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.7rem;
+}
+.admin-table {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.admin-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr 7rem 6rem;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.9rem 1.2rem;
+}
+.admin-row + .admin-row { border-top: 1px solid var(--line); }
+.admin-row--head {
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--bg);
+}
+.admin-row__img { width: 2.6rem; height: 2.6rem; object-fit: contain; }
+.admin-row__emoji { font-size: 1.6rem; }
+.admin-row__name { font-weight: 800; font-size: 0.95rem; }
+.admin-row__detail { font-weight: 500; font-size: 0.78rem; color: var(--ink-soft); }
+.admin-row input {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.admin-row input:focus { outline: none; border-color: var(--accent); }
+.admin__loading { padding: 1.5rem; font-weight: 600; color: var(--ink-soft); }
+.admin__ok {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #1B7A4E;
+  background: rgba(27, 122, 78, 0.08);
+  border: 1px solid rgba(27, 122, 78, 0.25);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+}
+@media (max-width: 540px) {
+  .admin-row { grid-template-columns: 2.4rem 1fr 5rem 4.5rem; gap: 0.6rem; }
+}
